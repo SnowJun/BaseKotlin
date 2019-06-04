@@ -41,9 +41,7 @@ open class BasePresenter<GV : IBaseView>() {
     }
 
     fun onLoadinged() {
-        if (mLargeLoadingDialog != null && mLargeLoadingDialog!!.isShowing) {
-            mLargeLoadingDialog?.dismiss()
-        }
+        mLargeLoadingDialog?.dismiss()
         if (mLargeLoadingDialog != null) {
             mLargeLoadingDialog = null
         }
