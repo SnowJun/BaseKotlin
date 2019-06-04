@@ -1,4 +1,4 @@
-package com.zgj.base
+package com.zgj.base.ui
 
 import android.app.Activity
 import android.support.v4.app.Fragment

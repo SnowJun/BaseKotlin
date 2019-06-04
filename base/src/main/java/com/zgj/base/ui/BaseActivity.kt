@@ -1,4 +1,4 @@
-package com.zgj.base
+package com.zgj.base.ui
 
 import android.content.Intent
 import android.graphics.Color

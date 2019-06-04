@@ -1,6 +1,7 @@
 package com.zgj.base
 
 import android.app.Activity
+import com.zgj.base.ui.BasePresenter
 
 /**
  *  @author Simple
