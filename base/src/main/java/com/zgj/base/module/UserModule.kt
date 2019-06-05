@@ -6,6 +6,7 @@ import com.trello.rxlifecycle2.android.FragmentEvent
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import com.trello.rxlifecycle2.components.support.RxFragment
 import com.zgj.base.net.ServiceFactory
+import com.zgj.base.net.function.RetryFunction
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,7 +29,7 @@ class UserModule(private val lifecycleProvider: LifecycleProvider<*>) {
         var observable =observable.subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .retry()
+            .retryWhen(RetryFunction())
         when (lifecycleProvider) {
             is RxAppCompatActivity -> observable.compose(lifecycleProvider.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(observer)
