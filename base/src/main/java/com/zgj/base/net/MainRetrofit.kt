@@ -1,6 +1,7 @@
 package com.zgj.base.net
 
 import android.content.Context
+import android.text.TextUtils
 import com.orhanobut.logger.Logger
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -54,6 +55,18 @@ class MainRetrofit {
                     builder.addHeader(it.key, it.value)
                 }
                 var request = builder.build()
+                //动态host拦截器实现
+                val hostKey =request.header(HostManager.HOST_HEADER_KEY)
+                if (!TextUtils.isEmpty(hostKey)){
+                    val host =HostManager.instance.getHost(hostKey)
+                    if (TextUtils.isEmpty(host)){
+                        Logger.e("要替换的host未在HostManager初始化")
+                    }else{
+                        var httpUrl =request.url()
+                        httpUrl = httpUrl.newBuilder().host(host).build()
+                        request =request.newBuilder().url(httpUrl).build()
+                    }
+                }
                 chain.proceed(request)
 
             }
