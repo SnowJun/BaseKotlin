@@ -44,8 +44,7 @@ class MainRetrofit {
 
         private fun getCacheInstance(): Cache? {
             var cacheFile = File(context?.cacheDir, "cache")
-            var cache = Cache(cacheFile, 50 * 1024 * 1024)
-            return cache
+            return Cache(cacheFile, 50 * 1024 * 1024)
         }
 
         private fun getInterceptor(): Interceptor {
@@ -70,9 +69,10 @@ class MainRetrofit {
                 .build()
         }
 
-        fun initNet(context: Context, headers: Map<String, String>) {
+        fun initNet(context: Context, baseUrl: String, headers: Map<String, String>) {
             this.headers = headers
             this.context = context
+            this.BASE_URL = baseUrl
             provideOkHttp()
         }
     }
