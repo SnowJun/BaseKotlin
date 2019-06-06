@@ -3,6 +3,7 @@ package com.zgj.base
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
+import butterknife.OnClick
 import com.orhanobut.logger.Logger
 import com.zgj.base.event.AppBus
 import com.zgj.base.event.AppEvent
@@ -12,10 +13,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity<MainPresenter>(), IMainView {
 
 
+
     override fun initView() {
-        hello.setOnClickListener { v: View? ->
-            AppBus.instance.sendDefaultEvent(AppEvent(1, 1, "123"))
-        }
     }
 
     override fun initPresenter(intent: Intent?) {
@@ -40,6 +39,16 @@ class MainActivity : BaseActivity<MainPresenter>(), IMainView {
             }
         })
 
+    }
+
+    @OnClick(R.id.hello)
+    internal fun onClick(view:View){
+        when(view.id){
+            R.id.hello->{
+                Logger.d("点击Hello")
+//                AppBus.instance.sendDefaultEvent(AppEvent(2,2,"2from","23event"))
+            }
+        }
     }
 
 

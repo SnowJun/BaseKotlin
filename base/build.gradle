@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 //绑定控件 不需要findViewById
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 28
-
-
 
     defaultConfig {
         minSdkVersion 21
@@ -54,8 +54,8 @@ dependencies {
     api 'com.github.VictorAlbertos.Jolyglot:gson:0.0.4'
     //ButterKnife
     api 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
+//    api 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
     //logUtils
     api 'com.orhanobut:logger:2.2.0'
     // LiveDataEventBus
