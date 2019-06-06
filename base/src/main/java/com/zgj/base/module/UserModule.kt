@@ -26,14 +26,14 @@ class UserModule(private val lifecycleProvider: LifecycleProvider<*>) {
 
 
     fun rx(observable: Observable<*>,observer: Observer<in Any>){
-        var observable =observable.subscribeOn(Schedulers.io())
+        var observable1 =observable.subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .retryWhen(RetryFunction())
         when (lifecycleProvider) {
-            is RxAppCompatActivity -> observable.compose(lifecycleProvider.bindUntilEvent(ActivityEvent.DESTROY))
+            is RxAppCompatActivity -> observable1.compose(lifecycleProvider.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(observer)
-            is RxFragment -> observable.compose(lifecycleProvider.bindUntilEvent(FragmentEvent.DESTROY))
+            is RxFragment -> observable1.compose(lifecycleProvider.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(observer)
         }
     }

@@ -25,16 +25,16 @@ class IndexModule private constructor(private val lifecycleProvider: LifecyclePr
 
 
     fun rx(observable: Observable<*> ,observer: Observer<Any>){
-        var observable = observable.subscribeOn(Schedulers.io())
+        var observable1 = observable.subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .retryWhen(RetryFunction())
         when(lifecycleProvider){
             is RxAppCompatActivity ->
-                observable.compose(lifecycleProvider.bindUntilEvent(ActivityEvent.DESTROY))
+                observable1.compose(lifecycleProvider.bindUntilEvent(ActivityEvent.DESTROY))
                     .subscribe(observer)
             is RxFragment ->
-                observable.compose(lifecycleProvider.bindUntilEvent(FragmentEvent.DESTROY))
+                observable1.compose(lifecycleProvider.bindUntilEvent(FragmentEvent.DESTROY))
                     .subscribe(observer)
         }
     }

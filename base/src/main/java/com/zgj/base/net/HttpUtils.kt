@@ -92,7 +92,7 @@ class HttpUtils {
         }
 
         private fun prepareTrustManager(vararg certificates: InputStream): Array<TrustManager>? {
-            if (certificates == null || certificates.size <= 0) {
+            if (certificates.isEmpty()) {
                 return null
             }
             try {
@@ -108,7 +108,7 @@ class HttpUtils {
                     // 将 cert 作为可信证书放入到keyStore中
                     keyStore.setCertificateEntry(certificateAlias, cert)
                     try {
-                        certStream?.close()
+                        certStream.close()
                     } catch (e: IOException) {
                         Log.e("error", e.message)
                     }
