@@ -46,7 +46,7 @@ class MainActivity : BaseActivity<MainPresenter>(), IMainView {
         when(view.id){
             R.id.hello->{
                 Logger.d("点击Hello")
-//                AppBus.instance.sendDefaultEvent(AppEvent(2,2,"2from","23event"))
+                AppBus.instance.sendDefaultEvent(AppEvent(2,2,"2from","23event"))
             }
         }
     }
