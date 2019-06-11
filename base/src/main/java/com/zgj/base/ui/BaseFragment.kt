@@ -15,7 +15,7 @@ import com.trello.rxlifecycle2.components.support.RxFragment
  *  @date 2019/6/3
  *  @description ：
  **/
-open abstract class BaseFragment<P : BasePresenter<out IBaseView>> : RxFragment() {
+abstract class BaseFragment<P : BasePresenter<out IBaseView>> : RxFragment() {
 
     protected var mPresenter: P? = null
     protected var mActivity: Activity? = null

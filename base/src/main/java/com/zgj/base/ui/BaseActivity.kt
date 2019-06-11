@@ -17,7 +17,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
  *  @date 2019/6/4
  *  @description ：
  **/
-open abstract class BaseActivity<P : BasePresenter<out IBaseView>> : RxAppCompatActivity() {
+abstract class BaseActivity<P : BasePresenter<out IBaseView>> : RxAppCompatActivity() {
 
     private var isTrans: Boolean = false
     protected var mPresenter: P? = null
