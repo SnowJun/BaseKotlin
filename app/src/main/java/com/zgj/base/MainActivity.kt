@@ -8,7 +8,6 @@ import com.orhanobut.logger.Logger
 import com.zgj.base.event.AppBus
 import com.zgj.base.event.AppEvent
 import com.zgj.base.ui.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<MainPresenter>(), IMainView {
 
